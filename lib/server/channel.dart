@@ -1,3 +1,6 @@
+import 'package:iot_dashboard_mock/server/account/user.dart';
+import 'package:iot_dashboard_mock/server/shared/basic_auth_validator.dart';
+
 import 'iot_dashboard_mock.dart';
 
 /// This type initializes an application.
@@ -27,11 +30,12 @@ class IotDashboardMockChannel extends ApplicationChannel {
   Controller get entryPoint {
     final router = Router();
 
-    // Prefer to use `link` instead of `linkFunction`.
-    // See: https://aqueduct.io/docs/http/request_controller/
-    router.route("/example").linkFunction((request) async {
-      return Response.ok({"key": "value"});
-    });
+    router
+        .route('/currentUser')
+        .link(() => Authorizer.basic(BasicAuthValidator()))
+        .linkFunction(currentUser);
+
+    router.route('/ping').linkFunction((request) => Response.ok('pong'));
 
     return router;
   }

@@ -1,10 +1,10 @@
-import 'package:iot_dashboard_mock/iot_dashboard_mock.dart';
 import 'package:aqueduct_test/aqueduct_test.dart';
+import 'package:iot_dashboard_mock/server/iot_dashboard_mock.dart';
 
-export 'package:iot_dashboard_mock/iot_dashboard_mock.dart';
-export 'package:aqueduct_test/aqueduct_test.dart';
-export 'package:test/test.dart';
 export 'package:aqueduct/aqueduct.dart';
+export 'package:aqueduct_test/aqueduct_test.dart';
+export 'package:iot_dashboard_mock/server/iot_dashboard_mock.dart';
+export 'package:test/test.dart';
 
 /// A testing harness for iot_dashboard_mock.
 ///

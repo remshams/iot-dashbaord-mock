@@ -1,4 +1,4 @@
-import 'package:iot_dashboard_mock/iot_dashboard_mock.dart';
+import 'package:iot_dashboard_mock/server/iot_dashboard_mock.dart';
 
 Future main() async {
   final app = Application<IotDashboardMockChannel>()
