@@ -1,37 +1,35 @@
-import 'package:iot_dashboard_mock/core/account/account.dart';
-import 'package:iot_dashboard_mock/core/account/model.dart';
+import 'package:iot_dashboard_mock/core/account/account_repository.dart';
 import 'package:test/test.dart';
 
 import '../../matchers/iterable.dart';
 import 'fixture.dart';
 
 void main() {
-  group('Account', () {
+  group('Account Repository', () {
     final accounts = createAccountListFixture(min: 2);
-    final createLoader = ({List<Account> accounts}) =>
-        () => Stream.value(accounts ?? createAccountListFixture(min: 2));
+    final accountsRepository =
+        InMemporyAccountRepository.fromIterable(accounts);
+
     group('findAccount', () {
       test('should emit all accounts in case no query is specified', () {
-        expect(findAccount(loader: createLoader(accounts: accounts)),
-            emits(accounts));
+        expect(accountsRepository.findAccount(), emits(accounts));
       });
       test('should emit accounts filtered by name', () {
         const name = 'testName';
         final accountsWithName = [
-          createAccountFixture(name: name),
+          createAccountFixture(id: 99, name: name),
           ...accounts
         ];
 
         expect(
-            findAccount(
-                name: name, loader: createLoader(accounts: accountsWithName)),
+            InMemporyAccountRepository.fromIterable(accountsWithName)
+                .findAccount(name: name),
             emits(deepEquals([accountsWithName[0]])));
       });
       test(
           'should emit empty list in case no account with the given name exists',
           () {
-        expect(findAccount(name: 'doesNotExist', loader: createLoader()),
-            emits([]));
+        expect(accountsRepository.findAccount(name: 'doesNotExist'), emits([]));
       });
     });
   });

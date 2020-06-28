@@ -18,4 +18,4 @@ class Account {
   int get hashCode => id.hashCode ^ name.hashCode ^ email.hashCode;
 }
 
-typedef AccountDbLoader = Stream<List<Account>> Function();
+typedef AccountLoader = Stream<List<Account>> Function();
