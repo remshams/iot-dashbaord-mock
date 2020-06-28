@@ -7,8 +7,7 @@ import 'fixture.dart';
 void main() {
   group('Account Repository', () {
     final accounts = createAccountListFixture(min: 2);
-    final accountsRepository =
-        InMemporyAccountRepository.fromIterable(accounts);
+    final accountsRepository = InMemoryAccountRepository.fromIterable(accounts);
 
     group('findAccount', () {
       test('should emit all accounts in case no query is specified', () {
@@ -22,7 +21,7 @@ void main() {
         ];
 
         expect(
-            InMemporyAccountRepository.fromIterable(accountsWithName)
+            InMemoryAccountRepository.fromIterable(accountsWithName)
                 .findAccount(name: name),
             emits(deepEquals([accountsWithName[0]])));
       });
