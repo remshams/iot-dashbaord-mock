@@ -1,8 +1,8 @@
-import 'package:collection/collection.dart';
 import 'package:iot_dashboard_mock/core/account/account.dart';
 import 'package:iot_dashboard_mock/core/account/model.dart';
 import 'package:test/test.dart';
 
+import '../../matchers/iterable.dart';
 import 'fixture.dart';
 
 void main() {
@@ -21,12 +21,11 @@ void main() {
           createAccountFixture(name: name),
           ...accounts
         ];
-        final accounts$ = findAccount(
-                name: name, loader: createLoader(accounts: accountsWithName))
-            .map((accountsReturned) => const ListEquality()
-                .equals(accountsReturned, [accountsWithName[0]]));
 
-        expect(accounts$, emits(true));
+        expect(
+            findAccount(
+                name: name, loader: createLoader(accounts: accountsWithName)),
+            emits(deepEquals([accountsWithName[0]])));
       });
       test(
           'should emit empty list in case no account with the given name exists',
