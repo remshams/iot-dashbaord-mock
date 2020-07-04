@@ -4,7 +4,7 @@ version: 0.0.1
 author: stable|kernel <jobs@stablekernel.com>
 
 environment:
-  sdk: ">=2.3.0 <3.0.0"
+  sdk: '>=2.3.0 <3.0.0'
 
 dependencies:
   aqueduct: 3.3.0+1
@@ -15,3 +15,4 @@ dev_dependencies:
   aqueduct_test: ^1.0.0
   faker: ^1.2.1
   collection: ^1.14.13
+  mockito: ^4.1.1
