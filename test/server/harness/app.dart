@@ -1,4 +1,5 @@
 import 'package:aqueduct_test/aqueduct_test.dart';
+import 'package:iot_dashboard_mock/assets/db.dart';
 import 'package:iot_dashboard_mock/server/iot_dashboard_mock.dart';
 
 export 'package:aqueduct/aqueduct.dart';
@@ -20,9 +21,21 @@ export 'package:test/test.dart';
 ///         }
 ///
 class Harness extends TestHarness<IotDashboardMockChannel> {
+  final bool _withAuth;
+
+  Harness({bool withAuth = true}) : _withAuth = withAuth;
+
   @override
-  Future onSetUp() async {}
+  Future onSetUp() async {
+    if (_withAuth == true) {
+      _setupAuth();
+    }
+  }
 
   @override
   Future onTearDown() async {}
+
+  void _setupAuth() {
+    agent.setBasicAuthorization(accounts[0].name, 'password');
+  }
 }
