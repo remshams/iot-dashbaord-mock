@@ -5,15 +5,16 @@ abstract class AccountRepository {
 }
 
 class InMemoryAccountRepository implements AccountRepository {
-  final Map<int, Account> _accounts;
+  final Map<String, Account> _accounts;
 
   const InMemoryAccountRepository(this._accounts);
 
   InMemoryAccountRepository.fromIterable(Iterable<Account> accounts)
       : this(_accountsFromIterable(accounts));
 
-  static Map<int, Account> _accountsFromIterable(Iterable<Account> accounts) {
-    return Map.fromIterable(accounts, key: (account) => account.id as int);
+  static Map<String, Account> _accountsFromIterable(
+      Iterable<Account> accounts) {
+    return Map.fromIterable(accounts, key: (account) => account.id as String);
   }
 
   @override

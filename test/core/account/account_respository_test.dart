@@ -16,7 +16,7 @@ void main() {
       test('should emit accounts filtered by name', () {
         const name = 'testName';
         final accountsWithName = [
-          createAccountFixture(id: 99, name: name),
+          createAccountFixture(id: '99', name: name),
           ...accounts
         ];
 

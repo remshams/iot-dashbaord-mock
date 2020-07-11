@@ -25,7 +25,6 @@ void main() {
       test('should return authorization in case valid', () async {
         final authorizationReturned =
             await validator.validate(authorizationParser, credentials);
-        expect(authorizationReturned.ownerID, equals(account.id));
         expect(authorizationReturned.account, equals(account));
       });
       test('should return null in case not valid', () async {

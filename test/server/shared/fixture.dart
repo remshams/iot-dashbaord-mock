@@ -18,9 +18,8 @@ AuthBasicCredentials createAuthBasicCredentialsFixture(
       ..password = 'test';
 
 AccountAuthorization createAccountAuthorizationFixture(
-    {int ownerId, AuthValidator validator, Account account}) {
+    {Account account, AuthValidator validator}) {
   final fixtureAccount = createAccountFixture();
   return AccountAuthorization(
-      ownerId ?? fixtureAccount.id, validator ?? MockAuthValidator(),
-      account: fixtureAccount);
+      account ?? fixtureAccount, validator ?? MockAuthValidator());
 }

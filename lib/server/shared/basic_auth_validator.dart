@@ -15,7 +15,10 @@ class BasicAuthValidator extends AuthValidator {
     return _system.accountRepository
         .findAccount(name: basicAuthData.username)
         .map((accounts) => accounts.length == 1
-            ? AccountAuthorization(accounts[0].id, this, account: accounts[0])
+            ? AccountAuthorization(
+                accounts[0],
+                this,
+              )
             : null)
         .single;
   }
