@@ -1,5 +1,6 @@
 import 'package:iot_dashboard_mock/assets/db.dart';
 import 'package:iot_dashboard_mock/server/dto/account.dart';
+import 'package:iot_dashboard_mock/server/routing/routes.dart';
 
 import '../app.dart';
 
@@ -9,7 +10,7 @@ Future main() async {
   group('currentUser', () {
     group('GET', () {
       test('should return user', () async {
-        final response = await harness.agent.get('currentUser');
+        final response = await harness.agent.get(toPath(AppRoute.currentUser));
 
         expect(response, hasStatus(HttpStatus.ok));
         expect(response,
