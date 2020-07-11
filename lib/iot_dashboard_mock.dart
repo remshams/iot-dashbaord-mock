@@ -3,9 +3,4 @@
 /// A Aqueduct web server.
 library iot_dashboard_mock;
 
-export 'dart:async';
-export 'dart:io';
-
-export 'package:aqueduct/aqueduct.dart';
-
-export 'channel.dart';
+export 'server/channel.dart';
