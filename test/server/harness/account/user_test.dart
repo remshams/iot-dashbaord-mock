@@ -7,10 +7,11 @@ import '../app.dart';
 Future main() async {
   final harness = Harness()..install();
 
-  group('currentUser', () {
+  group('currentAccount', () {
     group('GET', () {
-      test('should return user', () async {
-        final response = await harness.agent.get(toPath(AppRoute.currentUser));
+      test('should return account', () async {
+        final response =
+            await harness.agent.get(toPath(AppRoute.currentAccount));
 
         expect(response, hasStatus(HttpStatus.ok));
         expect(response,

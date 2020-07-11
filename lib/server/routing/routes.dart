@@ -1,4 +1,4 @@
-enum AppRoute { currentUser, ping }
+enum AppRoute { currentAccount, ping }
 
 String toPath(dynamic route) =>
     route.toString().replaceAll('${route.runtimeType}.', '/');

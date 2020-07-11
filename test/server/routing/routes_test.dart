@@ -5,7 +5,7 @@ void main() {
   group('Routing', () {
     group('toPath', () {
       test('should return path from enum', () {
-        expect(toPath(AppRoute.currentUser), equals('/currentUser'));
+        expect(toPath(AppRoute.currentAccount), equals('/currentUser'));
       });
     });
   });

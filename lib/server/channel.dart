@@ -35,7 +35,7 @@ class IotDashboardMockChannel extends ApplicationChannel {
     final system = System.inMemory();
 
     router
-        .route(toPath(AppRoute.currentUser))
+        .route(toPath(AppRoute.currentAccount))
         .link(() => Authorizer.basic(BasicAuthValidator(system)))
         .linkFunction(currentUser);
 
