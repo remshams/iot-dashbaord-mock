@@ -1,4 +1,4 @@
-import 'package:iot_dashboard_mock/server/iot_dashboard_mock.dart';
+import 'package:iot_dashboard_mock/server/server.dart';
 import 'package:iot_dashboard_mock/server/shared/system.dart';
 
 class SystemController extends Controller {
