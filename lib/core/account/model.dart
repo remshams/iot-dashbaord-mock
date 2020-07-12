@@ -1,9 +1,9 @@
 class Account {
   final String id;
-  final String name;
+  final String username;
   final String email;
 
-  const Account(this.id, this.name, this.email);
+  const Account(this.id, this.username, this.email);
 
   @override
   bool operator ==(Object other) =>
@@ -11,13 +11,11 @@ class Account {
       other is Account &&
           runtimeType == other.runtimeType &&
           id == other.id &&
-          name == other.name &&
+          username == other.username &&
           email == other.email;
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ email.hashCode;
-
-  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'email': email};
+  int get hashCode => id.hashCode ^ username.hashCode ^ email.hashCode;
 }
 
 typedef AccountLoader = Stream<List<Account>> Function();

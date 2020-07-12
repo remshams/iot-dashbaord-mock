@@ -12,7 +12,7 @@ void main() {
     final accountRepository = MockAccountRepository();
     final account = createAccountFixture();
     final credentials =
-        createAuthBasicCredentialsFixture(username: account.name);
+        createAuthBasicCredentialsFixture(username: account.username);
     final system = System(accountRepository);
     final validator = BasicAuthValidator(system);
 
