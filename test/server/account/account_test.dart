@@ -1,4 +1,4 @@
-import 'package:iot_dashboard_mock/server/account/user.dart';
+import 'package:iot_dashboard_mock/server/account/account.dart';
 import 'package:iot_dashboard_mock/server/dto/account.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
@@ -18,9 +18,9 @@ void main() {
       when(request.authorization).thenReturn(accountAuthorization);
     });
 
-    group('currentUser', () {
+    group('currentAccount', () {
       test('should return response with current user account', () async {
-        final response = await currentUser(request);
+        final response = await currentAccount(request);
 
         expect(response.body, equals(AccountDto.fromAccount(account)));
       });

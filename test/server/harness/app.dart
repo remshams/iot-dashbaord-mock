@@ -37,6 +37,6 @@ class Harness extends TestHarness<IotDashboardMockChannel> {
   Future onTearDown() async {}
 
   void _setupAuth() {
-    agent.setBasicAuthorization(accounts[0].name, 'password');
+    agent.setBasicAuthorization(accounts[0].username, 'password');
   }
 }

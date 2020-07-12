@@ -20,7 +20,7 @@ class InMemoryAccountRepository implements AccountRepository {
   @override
   Stream<List<Account>> findAccount({String name}) {
     return Stream.value(_accounts.values).map((accounts) => accounts
-        .where((account) => name == null || account.name == name)
+        .where((account) => name == null || account.username == name)
         .toList());
   }
 }
