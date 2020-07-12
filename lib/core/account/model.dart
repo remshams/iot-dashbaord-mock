@@ -16,9 +16,6 @@ class Account {
 
   @override
   int get hashCode => id.hashCode ^ username.hashCode ^ email.hashCode;
-
-  Map<String, dynamic> toJson() =>
-      {'id': id, 'username': username, 'email': email};
 }
 
 typedef AccountLoader = Stream<List<Account>> Function();
