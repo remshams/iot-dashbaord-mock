@@ -14,7 +14,8 @@ class InMemoryAccountRepository implements AccountRepository {
 
   static Map<String, Account> _accountsFromIterable(
       Iterable<Account> accounts) {
-    return Map.fromIterable(accounts, key: (account) => account.id as String);
+    return Map.fromIterable(accounts,
+        key: (dynamic account) => account.id as String);
   }
 
   @override

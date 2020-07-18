@@ -15,7 +15,7 @@ class InMemoryDeviceRepository implements DeviceRepository {
       : this(_devicesFromIterable(devices));
 
   static Map<String, Device> _devicesFromIterable(Iterable<Device> devices) =>
-      Map.fromIterable(devices, key: (device) => device.id as String);
+      Map.fromIterable(devices, key: (dynamic device) => device.id as String);
 
   @override
   Stream<List<Device>> list({String lastDeviceId, int numberOfDevices}) =>

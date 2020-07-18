@@ -1,3 +1,4 @@
+import 'package:iot_dashboard_mock/core/device/device.dart';
 import 'package:iot_dashboard_mock/core/device/device_respository.dart';
 import 'package:test/test.dart';
 
@@ -34,7 +35,8 @@ void main() {
       });
       test('should emit empty list when lastDeviceId is last device in list',
           () {
-        expect(repository.list(lastDeviceId: devices.last.id), emits([]));
+        expect(
+            repository.list(lastDeviceId: devices.last.id), emits(<Device>[]));
       });
       test(
           'should emit rest of list when last device plus number of request devices exceeds device list length',

@@ -1,4 +1,5 @@
 import 'package:iot_dashboard_mock/core/account/account_repository.dart';
+import 'package:iot_dashboard_mock/core/account/model.dart';
 import 'package:test/test.dart';
 
 import '../../matchers/iterable.dart';
@@ -23,12 +24,13 @@ void main() {
         expect(
             InMemoryAccountRepository.fromIterable(accountsWithName)
                 .findAccount(name: name),
-            emits(deepEquals([accountsWithName[0]])));
+            emits(deepEquals(<Account>[accountsWithName[0]])));
       });
       test(
           'should emit empty list in case no account with the given name exists',
           () {
-        expect(accountsRepository.findAccount(name: 'doesNotExist'), emits([]));
+        expect(accountsRepository.findAccount(name: 'doesNotExist'),
+            emits(<Account>[]));
       });
     });
   });

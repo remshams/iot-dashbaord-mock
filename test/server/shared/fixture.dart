@@ -5,7 +5,8 @@ import 'package:mockito/mockito.dart';
 import '../../core/account/fixture.dart';
 import '../harness/app.dart';
 
-class MockAuthorizationParser extends Mock implements AuthorizationParser {}
+class MockAuthorizationParser<T> extends Mock
+    implements AuthorizationParser<T> {}
 
 class MockRequest extends Mock implements Request {}
 

@@ -1,3 +1,4 @@
+import 'package:aqueduct/aqueduct.dart';
 import 'package:iot_dashboard_mock/server/shared/basic_auth_validator.dart';
 import 'package:iot_dashboard_mock/server/shared/system.dart';
 import 'package:mockito/mockito.dart';
@@ -8,7 +9,7 @@ import 'fixture.dart';
 
 void main() {
   group('BasicAuthValidator', () {
-    final authorizationParser = MockAuthorizationParser();
+    final authorizationParser = MockAuthorizationParser<AuthBasicCredentials>();
     final accountRepository = MockAccountRepository();
     final account = createAccountFixture();
     final credentials =
@@ -23,8 +24,8 @@ void main() {
 
     group('validate', () {
       test('should return authorization in case valid', () async {
-        final authorizationReturned =
-            await validator.validate(authorizationParser, credentials);
+        final authorizationReturned = await validator
+            .validate<AuthBasicCredentials>(authorizationParser, credentials);
         expect(authorizationReturned.account, equals(account));
       });
       test('should return null in case not valid', () async {

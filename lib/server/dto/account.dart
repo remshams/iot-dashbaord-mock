@@ -9,7 +9,7 @@ class AccountDto extends Equatable {
   const AccountDto(this.id, this.username, this.email);
 
   Map<String, dynamic> toJson() =>
-      {'id': id, 'username': username, 'email': email};
+      <String, dynamic>{'id': id, 'username': username, 'email': email};
 
   AccountDto.fromAccount(Account account)
       : this(account.id, account.username, account.email);
