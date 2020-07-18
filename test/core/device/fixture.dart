@@ -11,7 +11,7 @@ Device createDeviceFixture(
 
 List<Device> createDeviceListFixture({int min = 0, int max = 12}) =>
     List.generate(
-        max - min,
+        faker.randomGenerator.integer(max, min: min),
         (index) => createDeviceFixture(
             id: index.toString(),
             name: faker.lorem.word(),
