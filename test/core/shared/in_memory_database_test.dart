@@ -7,7 +7,7 @@ import 'fixture.dart';
 
 void main() {
   group('InMemoryDatabase', () {
-    final models = createInMemoryDatabaseModelListFixture(min: 10);
+    final models = createDatabaseModelListFixture(min: 10);
     final repository = InMemoryDatabase.fromModelsIterable(models);
     group('list', () {
       test('should emit list of all stored models', () {
@@ -35,7 +35,7 @@ void main() {
       });
       test('should emit empty list when lastModelId is last model in list', () {
         expect(repository.list(lastModelId: models.last.id),
-            emits(<InMemoryDatabaseModel>[]));
+            emits(<DatabaseModel>[]));
       });
       test(
           'should emit rest of list when last model plus number of requested models exceeds model list length',
