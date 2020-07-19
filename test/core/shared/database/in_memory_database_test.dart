@@ -1,8 +1,8 @@
-import 'package:iot_dashboard_mock/core/shared/in_memory_database.dart';
-import 'package:iot_dashboard_mock/core/shared/model.dart';
+import 'package:iot_dashboard_mock/core/shared/database/in_memory_database.dart';
+import 'package:iot_dashboard_mock/core/shared/database/model.dart';
 import 'package:test/test.dart';
 
-import '../../matchers/iterable.dart';
+import '../../../matchers/iterable.dart';
 import 'fixture.dart';
 
 void main() {

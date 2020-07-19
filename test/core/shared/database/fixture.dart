@@ -1,5 +1,5 @@
 import 'package:faker/faker.dart';
-import 'package:iot_dashboard_mock/core/shared/model.dart';
+import 'package:iot_dashboard_mock/core/shared/database/model.dart';
 import 'package:meta/meta.dart';
 
 const faker = Faker();

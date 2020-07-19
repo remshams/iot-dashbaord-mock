@@ -1,4 +1,4 @@
-import 'package:iot_dashboard_mock/core/shared/model.dart';
+import 'package:iot_dashboard_mock/core/shared/database/model.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:tuple/tuple.dart';
 
