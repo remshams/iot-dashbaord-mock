@@ -8,7 +8,7 @@ class SystemController extends Controller {
 
   @override
   FutureOr<RequestOrResponse> handle(Request request) {
-    request.attachments[RequestAttachment.accountController] = system;
+    request.attachments[RequestAttachment.system] = system;
     return request;
   }
 }

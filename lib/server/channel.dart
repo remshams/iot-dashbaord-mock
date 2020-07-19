@@ -1,4 +1,5 @@
 import 'package:iot_dashboard_mock/server/account/account.dart';
+import 'package:iot_dashboard_mock/server/device/device.dart';
 import 'package:iot_dashboard_mock/server/routing/routes.dart';
 import 'package:iot_dashboard_mock/server/server.dart';
 import 'package:iot_dashboard_mock/server/shared/basic_auth_validator.dart';
@@ -32,11 +33,16 @@ class IotDashboardMockChannel extends ApplicationChannel {
   Controller get entryPoint {
     final router = Router();
     final system = System.inMemory();
+    final authValidator = BasicAuthValidator(system);
 
     router
         .route(toPath(AppRoute.currentAccount))
-        .link(() => Authorizer.basic(BasicAuthValidator(system)))
+        .link(() => Authorizer.basic(authValidator))
         .linkFunction(currentAccount);
+    router
+        .route(toPath(AppRoute.devices))
+        .link(() => Authorizer.basic(authValidator))
+        .link(() => DeviceController());
 
     router
         .route(toPath(AppRoute.ping))

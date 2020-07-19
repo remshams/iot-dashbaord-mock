@@ -1,6 +1,10 @@
 import 'package:iot_dashboard_mock/core/device/database/device.dart';
+import 'package:iot_dashboard_mock/core/device/database/device_database.dart';
+import 'package:mockito/mockito.dart';
 
 import '../fixture.dart';
+
+class MockDeviceDatabase extends Mock implements DeviceDatabase {}
 
 DatabaseDevice createDatabaseDeviceFixture(
         {String id = '0',

@@ -5,16 +5,19 @@ import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
 import '../../core/account/fixture.dart';
+import '../../core/device/database/fixture.dart';
 import 'fixture.dart';
 
 void main() {
   group('BasicAuthValidator', () {
     final authorizationParser = MockAuthorizationParser<AuthBasicCredentials>();
     final accountRepository = MockAccountRepository();
+    final deviceDatabase = MockDeviceDatabase();
     final account = createAccountFixture();
     final credentials =
         createAuthBasicCredentialsFixture(username: account.username);
-    final system = System(accountRepository);
+    // TODO add system fixture
+    final system = System(accountRepository, deviceDatabase);
     final validator = BasicAuthValidator(system);
 
     setUp(() {
