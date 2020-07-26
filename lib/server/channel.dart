@@ -1,5 +1,5 @@
 import 'package:iot_dashboard_mock/server/account/account.dart';
-import 'package:iot_dashboard_mock/server/device/device.dart';
+import 'package:iot_dashboard_mock/server/device/device_controller.dart';
 import 'package:iot_dashboard_mock/server/routing/routes.dart';
 import 'package:iot_dashboard_mock/server/server.dart';
 import 'package:iot_dashboard_mock/server/shared/basic_auth_validator.dart';
