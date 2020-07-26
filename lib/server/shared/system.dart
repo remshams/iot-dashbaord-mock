@@ -1,6 +1,5 @@
 import 'package:iot_dashboard_mock/assets/db.dart';
 import 'package:iot_dashboard_mock/core/account/account_repository.dart';
-import 'package:iot_dashboard_mock/core/device/database/device.dart';
 import 'package:iot_dashboard_mock/core/device/database/device_database.dart';
 import 'package:meta/meta.dart';
 
@@ -14,10 +13,8 @@ class System {
   const System(this.accountRepository, this.deviceDatabase);
 
   factory System.inMemory() {
-    return System(
-        InMemoryAccountRepository.fromIterable(accounts),
-        InMemoryDeviceDatabase.fromDeviceIterable(
-            devices.map(convertToDatabaseDevice)));
+    return System(InMemoryAccountRepository.fromIterable(accounts),
+        InMemoryDeviceDatabase.fromDeviceIterable(devices));
   }
 
   @override
