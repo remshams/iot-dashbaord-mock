@@ -10,9 +10,11 @@ DatabaseDevice createDatabaseDeviceFixture(
         {String id = '0',
         String name = 'testDevice',
         String description = 'testDeviceDescription'}) =>
-    convertDevice(
+    convertToDatabaseDevice(
         createDeviceFixture(id: id, name: name, description: description));
 
 List<DatabaseDevice> createDatabaseDeviceListFixture(
         {int min = 0, int max = 12}) =>
-    createDeviceListFixture(min: min, max: max).map(convertDevice).toList();
+    createDeviceListFixture(min: min, max: max)
+        .map(convertToDatabaseDevice)
+        .toList();

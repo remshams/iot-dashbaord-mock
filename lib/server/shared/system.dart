@@ -14,8 +14,10 @@ class System {
   const System(this.accountRepository, this.deviceDatabase);
 
   factory System.inMemory() {
-    return System(InMemoryAccountRepository.fromIterable(accounts),
-        InMemoryDeviceDatabase.fromDeviceIterable(devices.map(convertDevice)));
+    return System(
+        InMemoryAccountRepository.fromIterable(accounts),
+        InMemoryDeviceDatabase.fromDeviceIterable(
+            devices.map(convertToDatabaseDevice)));
   }
 
   @override

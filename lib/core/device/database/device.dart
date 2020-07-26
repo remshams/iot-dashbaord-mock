@@ -21,8 +21,6 @@ class DatabaseDevice implements DatabaseModel {
   int get hashCode => id.hashCode ^ device.hashCode;
 }
 
-// TODO add tests
-DatabaseDevice convertDevice(Device device) =>
+DatabaseDevice convertToDatabaseDevice(Device device) =>
     DatabaseDevice(device.id, device);
-Device convertDatabaseDevice(DatabaseDevice databaseDevice) =>
-    databaseDevice.device;
+Device convertToDevice(DatabaseDevice databaseDevice) => databaseDevice.device;
