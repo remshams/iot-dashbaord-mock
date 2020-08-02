@@ -1,5 +1,6 @@
 enum AppRoute { currentAccount, devices, ping }
 
+// TODO Refactor to removePrefix method
 String toPath(dynamic route) =>
     route.toString().replaceAll('${route.runtimeType}.', '/');
 

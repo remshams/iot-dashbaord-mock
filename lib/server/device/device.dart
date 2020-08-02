@@ -1,6 +1,7 @@
 import 'package:iot_dashboard_mock/core/device/device.dart';
 import 'package:meta/meta.dart';
 
+// TODO Add test for fromJson and toJson methods
 @immutable
 class DeviceDto {
   final String id;

@@ -9,7 +9,7 @@ class DeviceController extends ResourceController {
       @Bind.query('limit') int limit}) async {
     final system = request.attachments[RequestAttachment.system] as System;
     return Response.ok(await system.deviceDatabase
-        .list()
+        .list(lastDeviceId: lastDeviceId, numberOfDevices: limit)
         .map((devices) => devices.map(fromDevice).toList())
         .first);
   }
