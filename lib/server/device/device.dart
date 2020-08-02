@@ -6,13 +6,14 @@ class DeviceDto {
   final String id;
   final String name;
   final String description;
+  final String imageUrl;
 
-  const DeviceDto(this.id, this.name, this.description);
+  const DeviceDto(this.id, this.name, this.description, this.imageUrl);
   DeviceDto.fromDevice(Device device)
-      : this(device.id, device.name, device.description);
+      : this(device.id, device.name, device.description, device.imageUrl);
   DeviceDto.fromJson(Map<String, dynamic> json)
       : this(json['id'] as String, json['name'] as String,
-            json['description'] as String);
+            json['description'] as String, json['imageUrl'] as String);
 
   @override
   bool operator ==(Object o) {
@@ -21,14 +22,20 @@ class DeviceDto {
     return o is DeviceDto &&
         o.id == id &&
         o.name == name &&
-        o.description == description;
+        o.description == description &&
+        o.imageUrl == imageUrl;
   }
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ description.hashCode;
+  int get hashCode =>
+      id.hashCode ^ name.hashCode ^ description.hashCode ^ imageUrl.hashCode;
 
-  Map<String, dynamic> toJson() =>
-      <String, dynamic>{'id': id, 'name': name, 'description': description};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'name': name,
+        'description': description,
+        'imageUrl': imageUrl
+      };
 }
 
 DeviceDto fromDevice(Device device) => DeviceDto.fromDevice(device);
