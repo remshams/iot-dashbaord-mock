@@ -60,7 +60,8 @@ void main() {
         expect(entityList.map(copy), isNot(deepEquals(entityList)));
       });
       test('should not match in case not the same iterable', () {
-        expect(Set.from(valueEntityList), isNot(deepEquals(valueEntityList)));
+        expect(Set<_ValueEntity>.from(valueEntityList),
+            isNot(deepEquals(valueEntityList)));
       });
     });
   });

@@ -10,6 +10,8 @@ dependencies:
   aqueduct: 3.3.0+1
   rxdart: ^0.24.1
   equatable: ^1.2.0
+  meta: ^1.2.2
+  tuple: ^1.0.3
 
 dev_dependencies:
   test: ^1.0.0

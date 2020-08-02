@@ -4,7 +4,7 @@ import '../server/harness/app.dart';
 
 Matcher deepEquals(Iterable expected) => _IterableDeepEquals(expected);
 
-class _IterableDeepEquals<T extends Iterable> extends TypeMatcher<T> {
+class _IterableDeepEquals<T extends Iterable<dynamic>> extends TypeMatcher<T> {
   final T _expected;
 
   const _IterableDeepEquals(this._expected);
