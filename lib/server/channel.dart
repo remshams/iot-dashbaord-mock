@@ -48,6 +48,10 @@ class IotDashboardMockChannel extends ApplicationChannel {
         .route(toPath(AppRoute.ping))
         .linkFunction((request) => Response.ok('pong'));
 
+    router
+        .route('${AppRoute.img.path}/*')
+        .link(() => FileController('public/img'));
+
     return SystemController(system)..link(() => router);
   }
 }
