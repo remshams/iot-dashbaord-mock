@@ -1,4 +1,5 @@
 import 'package:iot_dashboard_mock/server/account/account.dart';
+import 'package:iot_dashboard_mock/server/configuration.dart';
 import 'package:iot_dashboard_mock/server/device/device_controller.dart';
 import 'package:iot_dashboard_mock/server/routing/routes.dart';
 import 'package:iot_dashboard_mock/server/server.dart';
@@ -30,8 +31,10 @@ class IotDashboardMockChannel extends ApplicationChannel {
   /// This method is invoked after [prepare].
   @override
   Controller get entryPoint {
+    final _serverConfiguration =
+        ServerConfiguration(options.configurationFilePath);
     final _router = Router();
-    final _domains = Domains.inMemory();
+    final _domains = Domains.inMemory(_serverConfiguration);
     final _authValidator = BasicAuthValidator(_domains);
 
     _router

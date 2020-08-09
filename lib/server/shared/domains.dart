@@ -3,6 +3,8 @@ import 'package:iot_dashboard_mock/assets/db.dart';
 import 'package:iot_dashboard_mock/core/account/account_repository.dart';
 import 'package:iot_dashboard_mock/core/device/database/device_database.dart';
 import 'package:iot_dashboard_mock/core/device/device_service.dart';
+import 'package:iot_dashboard_mock/core/shared/environment/host.dart';
+import 'package:iot_dashboard_mock/server/configuration.dart';
 import 'package:meta/meta.dart';
 
 enum RequestAttachment { system }
@@ -14,9 +16,11 @@ class Domains extends Equatable {
 
   const Domains(this.accountRepository, this.deviceService);
 
-  factory Domains.inMemory() {
-    return Domains(InMemoryAccountRepository.fromIterable(accounts),
-        DeviceService(InMemoryDeviceDatabase.fromDeviceIterable(devices)));
+  factory Domains.inMemory(ServerConfiguration serverConfiguration) {
+    return Domains(
+        InMemoryAccountRepository.fromIterable(accounts),
+        DeviceService(InMemoryDeviceDatabase.fromDeviceIterable(devices),
+            Host(serverConfiguration.host, serverConfiguration.port)));
   }
 
   @override

@@ -28,7 +28,7 @@ void main() {
             devices.sublist(0, limit).map(fromDevice).map(toJson);
 
         final response = await harness.agent.get(
-            '${toPath(AppRoute.devices)}?${removeEnumPrefix(DeviceQueryParam.limit)}=$limit');
+            '${toPath(AppRoute.devices)}?${removeEnumPrefix(DeviceQueryParam.pagesize)}=$limit');
 
         expect(response, hasStatus(HttpStatus.ok));
         expect(response, hasBody(equals(responseBodyExpected)));
