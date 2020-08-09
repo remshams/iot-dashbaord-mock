@@ -1,10 +1,10 @@
 import 'package:iot_dashboard_mock/server/account/account.dart';
+import 'package:iot_dashboard_mock/server/configuration.dart';
 import 'package:iot_dashboard_mock/server/device/device_controller.dart';
 import 'package:iot_dashboard_mock/server/routing/routes.dart';
 import 'package:iot_dashboard_mock/server/server.dart';
 import 'package:iot_dashboard_mock/server/shared/basic_auth_validator.dart';
-import 'package:iot_dashboard_mock/server/shared/system.dart';
-import 'package:iot_dashboard_mock/server/shared/system_controller.dart';
+import 'package:iot_dashboard_mock/server/shared/domains.dart';
 
 /// This type initializes an application.
 ///
@@ -31,23 +31,29 @@ class IotDashboardMockChannel extends ApplicationChannel {
   /// This method is invoked after [prepare].
   @override
   Controller get entryPoint {
-    final router = Router();
-    final system = System.inMemory();
-    final authValidator = BasicAuthValidator(system);
+    final _serverConfiguration =
+        ServerConfiguration.fromConfig(options.configurationFilePath);
+    final _router = Router();
+    final _domains = Domains.inMemory(_serverConfiguration);
+    final _authValidator = BasicAuthValidator(_domains);
 
-    router
+    _router
         .route(toPath(AppRoute.currentAccount))
-        .link(() => Authorizer.basic(authValidator))
+        .link(() => Authorizer.basic(_authValidator))
         .linkFunction(currentAccount);
-    router
+    _router
         .route(toPath(AppRoute.devices))
-        .link(() => Authorizer.basic(authValidator))
-        .link(() => DeviceController());
+        .link(() => Authorizer.basic(_authValidator))
+        .link(() => DeviceController(_domains));
 
-    router
+    _router
         .route(toPath(AppRoute.ping))
         .linkFunction((request) => Response.ok('pong'));
 
-    return SystemController(system)..link(() => router);
+    _router
+        .route('${AppRoute.img.path}/*')
+        .link(() => FileController('public/img'));
+
+    return _router;
   }
 }

@@ -1,18 +1,18 @@
 import 'package:iot_dashboard_mock/server/server.dart';
 import 'package:iot_dashboard_mock/server/shared/account_authorization.dart';
-import 'package:iot_dashboard_mock/server/shared/system.dart';
+import 'package:iot_dashboard_mock/server/shared/domains.dart';
 
 class BasicAuthValidator extends AuthValidator {
-  final System _system;
+  final Domains _domains;
 
-  BasicAuthValidator(this._system);
+  BasicAuthValidator(this._domains);
 
   @override
   FutureOr<AccountAuthorization> validate<T>(
       AuthorizationParser<T> parser, T authorizationData,
       {List<AuthScope> requiredScope}) {
     final basicAuthData = authorizationData as AuthBasicCredentials;
-    return _system.accountRepository
+    return _domains.accountRepository
         .findAccount(name: basicAuthData.username)
         .map((accounts) => accounts.length == 1
             ? AccountAuthorization(

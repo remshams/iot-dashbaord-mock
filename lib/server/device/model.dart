@@ -1,1 +1,1 @@
-enum DeviceQueryParam { limit, lastDeviceId }
+enum DeviceQueryParam { pagesize, lastDeviceId }

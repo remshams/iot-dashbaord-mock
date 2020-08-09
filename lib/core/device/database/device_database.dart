@@ -3,7 +3,7 @@ import 'package:iot_dashboard_mock/core/device/device.dart';
 import 'package:iot_dashboard_mock/core/shared/database/in_memory_database.dart';
 
 abstract class DeviceDatabase {
-  Stream<List<Device>> list({String lastDeviceId, int numberOfDevices});
+  Stream<List<Device>> list({String lastDeviceId, int limit});
 }
 
 class InMemoryDeviceDatabase implements DeviceDatabase {
@@ -18,9 +18,7 @@ class InMemoryDeviceDatabase implements DeviceDatabase {
       : this.fromDatabaseDeviceIterable(devices.map(convertToDatabaseDevice));
 
   @override
-  Stream<List<Device>> list({String lastDeviceId, int numberOfDevices}) =>
-      _inMemoryDatabase
-          .list(lastModelId: lastDeviceId, limit: numberOfDevices)
-          .map((databaseDevices) =>
-              databaseDevices.map(convertToDevice).toList());
+  Stream<List<Device>> list({String lastDeviceId, int limit}) =>
+      _inMemoryDatabase.list(lastModelId: lastDeviceId, limit: limit).map(
+          (databaseDevices) => databaseDevices.map(convertToDevice).toList());
 }
