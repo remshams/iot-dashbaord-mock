@@ -1,6 +1,6 @@
 import 'package:aqueduct/aqueduct.dart';
 import 'package:iot_dashboard_mock/server/shared/basic_auth_validator.dart';
-import 'package:iot_dashboard_mock/server/shared/system.dart';
+import 'package:iot_dashboard_mock/server/shared/domains.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
@@ -16,9 +16,8 @@ void main() {
     final account = createAccountFixture();
     final credentials =
         createAuthBasicCredentialsFixture(username: account.username);
-    // TODO add system fixture
-    final system = System(accountRepository, deviceDatabase);
-    final validator = BasicAuthValidator(system);
+    final domains = Domains(accountRepository, deviceDatabase);
+    final validator = BasicAuthValidator(domains);
 
     setUp(() {
       when(accountRepository.findAccount(name: credentials.username))

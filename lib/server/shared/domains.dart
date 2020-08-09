@@ -6,14 +6,14 @@ import 'package:meta/meta.dart';
 enum RequestAttachment { system }
 
 @immutable
-class System {
+class Domains {
   final AccountRepository accountRepository;
   final DeviceDatabase deviceDatabase;
 
-  const System(this.accountRepository, this.deviceDatabase);
+  const Domains(this.accountRepository, this.deviceDatabase);
 
-  factory System.inMemory() {
-    return System(InMemoryAccountRepository.fromIterable(accounts),
+  factory Domains.inMemory() {
+    return Domains(InMemoryAccountRepository.fromIterable(accounts),
         InMemoryDeviceDatabase.fromDeviceIterable(devices));
   }
 
@@ -21,7 +21,7 @@ class System {
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is System &&
+    return o is Domains &&
         o.accountRepository == accountRepository &&
         o.deviceDatabase == deviceDatabase;
   }
