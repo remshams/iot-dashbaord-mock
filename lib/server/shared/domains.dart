@@ -1,31 +1,24 @@
+import 'package:equatable/equatable.dart';
 import 'package:iot_dashboard_mock/assets/db.dart';
 import 'package:iot_dashboard_mock/core/account/account_repository.dart';
 import 'package:iot_dashboard_mock/core/device/database/device_database.dart';
+import 'package:iot_dashboard_mock/core/device/device_service.dart';
 import 'package:meta/meta.dart';
 
 enum RequestAttachment { system }
 
 @immutable
-class Domains {
+class Domains extends Equatable {
   final AccountRepository accountRepository;
-  final DeviceDatabase deviceDatabase;
+  final DeviceService deviceService;
 
-  const Domains(this.accountRepository, this.deviceDatabase);
+  const Domains(this.accountRepository, this.deviceService);
 
   factory Domains.inMemory() {
     return Domains(InMemoryAccountRepository.fromIterable(accounts),
-        InMemoryDeviceDatabase.fromDeviceIterable(devices));
+        DeviceService(InMemoryDeviceDatabase.fromDeviceIterable(devices)));
   }
 
   @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-
-    return o is Domains &&
-        o.accountRepository == accountRepository &&
-        o.deviceDatabase == deviceDatabase;
-  }
-
-  @override
-  int get hashCode => accountRepository.hashCode ^ deviceDatabase.hashCode;
+  List<Object> get props => [accountRepository, deviceService];
 }

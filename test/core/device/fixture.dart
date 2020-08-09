@@ -1,5 +1,9 @@
 import 'package:faker/faker.dart';
 import 'package:iot_dashboard_mock/core/device/device.dart';
+import 'package:iot_dashboard_mock/core/device/device_service.dart';
+import 'package:mockito/mockito.dart';
+
+class MockDeviceService extends Mock implements DeviceService {}
 
 const faker = Faker();
 
