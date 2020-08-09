@@ -9,7 +9,10 @@ class DeviceService {
   DeviceService(this._deviceDatabase, this.host);
 
   Stream<List<Device>> list({String lastDeviceId, int numberOfDevices}) {
-    return _deviceDatabase.list(
-        lastDeviceId: lastDeviceId, limit: numberOfDevices);
+    return _deviceDatabase
+        .list(lastDeviceId: lastDeviceId, limit: numberOfDevices)
+        .map((devices) => devices
+            .map((device) => device.prependHostToImageUrl(host))
+            .toList());
   }
 }

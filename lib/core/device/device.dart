@@ -1,7 +1,9 @@
+import 'package:equatable/equatable.dart';
+import 'package:iot_dashboard_mock/core/shared/environment/host.dart';
 import 'package:meta/meta.dart';
 
 @immutable
-class Device {
+class Device extends Equatable {
   final String id;
   final String name;
   final String description;
@@ -10,17 +12,23 @@ class Device {
   const Device(this.id, this.name, {this.description, this.imageUrl});
 
   @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
+  List<Object> get props => [id, name, description, imageUrl];
 
-    return o is Device &&
-        o.id == id &&
-        o.name == name &&
-        o.description == description &&
-        o.imageUrl == imageUrl;
+  Device copyWith({
+    String id,
+    String name,
+    String description,
+    String imageUrl,
+  }) {
+    return Device(
+      id ?? this.id,
+      name ?? this.name,
+      description: description ?? this.description,
+      imageUrl: imageUrl ?? this.imageUrl,
+    );
   }
 
-  @override
-  int get hashCode =>
-      id.hashCode ^ name.hashCode ^ description.hashCode ^ imageUrl.hashCode;
+  Device prependHostToImageUrl(Host host) => imageUrl != null
+      ? copyWith(imageUrl: prependHostToUrl(imageUrl, host))
+      : this;
 }

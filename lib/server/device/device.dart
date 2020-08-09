@@ -1,8 +1,9 @@
+import 'package:equatable/equatable.dart';
 import 'package:iot_dashboard_mock/core/device/device.dart';
 import 'package:meta/meta.dart';
 
 @immutable
-class DeviceDto {
+class DeviceDto extends Equatable {
   final String id;
   final String name;
   final String description;
@@ -16,19 +17,7 @@ class DeviceDto {
             json['description'] as String, json['imageUrl'] as String);
 
   @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-
-    return o is DeviceDto &&
-        o.id == id &&
-        o.name == name &&
-        o.description == description &&
-        o.imageUrl == imageUrl;
-  }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^ name.hashCode ^ description.hashCode ^ imageUrl.hashCode;
+  List<Object> get props => [id, name, description, imageUrl];
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         'id': id,

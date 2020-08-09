@@ -4,5 +4,7 @@ class ServerConfiguration extends Configuration {
   String host;
   int port;
 
-  ServerConfiguration(String fileName) : super.fromFile(File(fileName));
+  ServerConfiguration(this.host, this.port);
+  ServerConfiguration.fromConfig(String fileName)
+      : super.fromFile(File(fileName));
 }

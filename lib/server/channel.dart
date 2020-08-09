@@ -32,7 +32,7 @@ class IotDashboardMockChannel extends ApplicationChannel {
   @override
   Controller get entryPoint {
     final _serverConfiguration =
-        ServerConfiguration(options.configurationFilePath);
+        ServerConfiguration.fromConfig(options.configurationFilePath);
     final _router = Router();
     final _domains = Domains.inMemory(_serverConfiguration);
     final _authValidator = BasicAuthValidator(_domains);

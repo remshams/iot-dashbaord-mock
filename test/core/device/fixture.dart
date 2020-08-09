@@ -10,8 +10,9 @@ const faker = Faker();
 Device createDeviceFixture(
         {String id = '0',
         String name = 'testDevice',
-        String description = 'testDeviceDescription'}) =>
-    Device(id, name, description: description);
+        String description = 'testDeviceDescription',
+        String imageUrl = 'img/test.jpg'}) =>
+    Device(id, name, description: description, imageUrl: imageUrl);
 
 List<Device> createDeviceListFixture({int min = 0, int max = 12}) =>
     List.generate(

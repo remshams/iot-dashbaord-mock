@@ -4,7 +4,7 @@ import 'package:iot_dashboard_mock/server/server.dart';
 
 Future main() async {
   const configPath = 'config.yaml';
-  final serverConfiguration = ServerConfiguration(configPath);
+  final serverConfiguration = ServerConfiguration.fromConfig(configPath);
   final app = Application<IotDashboardMockChannel>()
     ..options.configurationFilePath = configPath
     ..options.address = serverConfiguration.host
