@@ -16,7 +16,7 @@ void main() {
         InMemoryDeviceDatabase.fromDatabaseDeviceIterable(databaseDevices);
 
     group('fromDeviceIterable', () {
-      test('should pupulate database with provided devices', () {
+      test('should populate database with provided devices', () {
         final repositoryFromDevices =
             InMemoryDeviceDatabase.fromDeviceIterable(devices);
         expect(repositoryFromDevices.list(), emits(deepEquals(devices)));
