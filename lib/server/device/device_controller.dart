@@ -10,7 +10,7 @@ class DeviceController extends ResourceController {
   @Operation.get()
   Future<Response> devices(
       {@Bind.query('lastDeviceId') String lastDeviceId,
-      @Bind.query('pagesize') int pageSize}) async {
+      @Bind.query('pageSize') int pageSize}) async {
     return Response.ok(await _domains.deviceService
         .list(lastDeviceId: lastDeviceId, numberOfDevices: pageSize)
         .map((devices) => devices.map(fromDevice).toList())

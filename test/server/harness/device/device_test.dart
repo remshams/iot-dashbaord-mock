@@ -5,7 +5,6 @@ import 'package:iot_dashboard_mock/core/shared/environment/host.dart';
 import 'package:iot_dashboard_mock/server/device/device.dart';
 import 'package:iot_dashboard_mock/server/device/model.dart';
 import 'package:iot_dashboard_mock/server/routing/routes.dart';
-import 'package:iot_dashboard_mock/utils/enum.dart';
 import 'package:test/test.dart';
 
 import '../app.dart';
@@ -35,7 +34,7 @@ void main() {
             .map(toJson);
 
         final response = await harness.agent.get(
-            '${toPath(AppRoute.devices)}?${removeEnumPrefix(DeviceQueryParam.pagesize)}=$limit');
+            '${toPath(AppRoute.devices)}?${DeviceQueryParam.pageSize.requestName}=$limit');
 
         expect(response, hasStatus(HttpStatus.ok));
         expect(response, hasBody(equals(responseBodyExpected)));
@@ -46,7 +45,7 @@ void main() {
             devicesImageUrlsProcessed.sublist(1).map(fromDevice).map(toJson);
 
         final response = await harness.agent.get(
-            '${toPath(AppRoute.devices)}?${removeEnumPrefix(DeviceQueryParam.lastDeviceId)}=$lastDeviceId');
+            '${toPath(AppRoute.devices)}?${DeviceQueryParam.lastDeviceId.requestName}=$lastDeviceId');
 
         expect(response, hasStatus(HttpStatus.ok));
         expect(response, hasBody(equals(responseExpected)));
